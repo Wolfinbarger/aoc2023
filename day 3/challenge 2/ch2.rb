@@ -4,7 +4,7 @@
 # thoughts is a matrix will be easier to check for surrounding area
 # lines are 141 characters long (includes escape), 140 without
 # total of 140 lines
-ans = []
+ans = 0
 $matrix = []
 symLocation = []
 fileData = File.read('input.txt')
@@ -97,7 +97,8 @@ def findNumbers(row, col)
   ans << checkTopRight(row, col).to_i
   ans << checkBottomLeft(row, col).to_i
   ans << checkBottomRight(row, col).to_i
-  ans
+  ans = ans.reject { |n| n.zero? }
+  (ans.count == 2) ? ans[0] * ans[1] : 0
 end
 
 # create matrix
@@ -115,4 +116,5 @@ $matrix.each_with_index do |row, n|
   end
 end
 
-p ans .reject { |n| n.zero? }.sum
+p ans
+# p ans .reject { |n| n.zero? }.sum
