@@ -1,4 +1,4 @@
-# find max of each color to make game possible
+find max of each color to make game possible
 
 bag = {'red' => 0, 'green'=> 0, 'blue' => 0}
 power = []
@@ -26,4 +26,3 @@ fileData.each_line do |line|
   bag = {'red' => 0, 'green'=> 0, 'blue' => 0}
 end
 puts power.sum
-# puts ans
