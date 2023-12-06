@@ -7,43 +7,51 @@
 ans = 0
 $matrix = []
 symLocation = []
+
 fileData = File.read('input.txt')
 
 def checkLeft(row, col)
   num = []
   col = col - 1
+
   while $matrix[row][col].match?(/\d/)
     num.push($matrix[row][col].to_i)
     col -= 1
   end
+
   num.reverse.join
 end
 
 def checkRight(row, col)
   num = []
   col = col + 1
+
   while !($matrix[row][col].nil?) && $matrix[row][col].match?(/\d/)
     num.push($matrix[row][col].to_i)
     col += 1
   end
+
   num.join
 end
 
 def checkTop(row, col)
   num = ''
   row = row - 1
+
  if $matrix[row][col].match?(/\d/)
   num = checkLeft(row, col) + $matrix[row][col] + checkRight(row, col)
  end
+
  num
 end
 
 def checkBottom(row, col)
   num = ''
   row = row + 1
- if $matrix[row][col].match?(/\d/)
-  num = checkLeft(row, col) + $matrix[row][col] + checkRight(row, col)
- end
+  if $matrix[row][col].match?(/\d/)
+    num = checkLeft(row, col) + $matrix[row][col] + checkRight(row, col)
+  end
+
  num
 end
 
@@ -51,9 +59,11 @@ def checkTopLeft(row, col)
   num = ''
   col = col
   row = row - 1
+
   if $matrix[row][col].match?(/\./)
     num = checkLeft(row, col)
   end
+
   num
 end
 
@@ -61,9 +71,11 @@ def checkTopRight(row, col)
   num = ''
   col = col
   row = row - 1
+
   if $matrix[row][col].match?(/\./)
     num = checkRight(row, col)
   end
+
   num
 end
 
@@ -71,9 +83,11 @@ def checkBottomLeft(row, col)
   num = ''
   col = col
   row = row + 1
+
   if $matrix[row][col].match?(/\./)
     num = checkLeft(row, col)
   end
+
   num
 end
 
@@ -81,9 +95,11 @@ def checkBottomRight(row, col)
   num = ''
   col = col
   row = row + 1
+
   if $matrix[row][col].match?(/\./) && !($matrix[row][col].nil?)
     num = checkRight(row, col)
   end
+
   num
 end
 
@@ -117,4 +133,3 @@ $matrix.each_with_index do |row, n|
 end
 
 p ans
-# p ans .reject { |n| n.zero? }.sum

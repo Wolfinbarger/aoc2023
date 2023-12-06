@@ -30,10 +30,10 @@ num = { '1' => "one",
 num_data = []
 newLine = []
 nums = []
+
 file_data = File.read('input.txt')
 
-
- file_data.each_line { |line| num_data << line.scan(/([1-9]|(oneight)|(twone)|(threeight)|(fiveight)|(sevenine)|(eightwo)|(eighthree)|(nineight)|(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine))/).join(' ') }
+file_data.each_line { |line| num_data << line.scan(/([1-9]|(oneight)|(twone)|(threeight)|(fiveight)|(sevenine)|(eightwo)|(eighthree)|(nineight)|(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine))/).join(' ') }
 
 num_data.each { |word| newLine << (word.split.first + " " + word.split.last) }
 
@@ -42,22 +42,16 @@ newLine.each_with_index { |line, idx| puts "#{idx}: #{line}" }
 newLines = newLine.map do |line|
   line = line.split
   subt = line[0].scan(/([1-9]|(one)|(two)|(three)|(four)|(five)|(six)|(seven)|(eight)|(nine)){1}/)
-  # puts subt.flatten
 
   line[0] = subt[0][0]
-
 
   subtt = (line[1].reverse.scan(/([1-9]|(eno)|(owt)|(eerht)|(ruof)|(evif)|(xis)|(neves)|(thgie)|(enin))/)).reverse
   subtt = subtt.flatten
 
-
   line[1] = subtt[0]
 
-
   line.join(' ')
-
 end
-# newLines.each_with_index { |line, idx| puts "#{idx}: #{line}" }
 
 
 nums = newLines.map do |line|
@@ -67,5 +61,5 @@ nums = newLines.map do |line|
   if !(line.last.match(/[1-9]/)) then line[-1] = num.fetch(line[-1]) end
   line.join.to_i
 end
+
 puts nums.sum
-# nums.each_with_index { |line, idx| puts "#{idx}: #{line}" }

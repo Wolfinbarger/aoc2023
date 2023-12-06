@@ -12,29 +12,33 @@ fileData = File.read('input.txt')
 def checkLeft(row, col)
   num = []
   col = col - 1
+
   while $matrix[row][col].match?(/\d/)
     num.push($matrix[row][col].to_i)
     col -= 1
   end
+
   num.reverse.join
 end
 
 def checkRight(row, col)
   num = []
   col = col + 1
+
   while !($matrix[row][col].nil?) && $matrix[row][col].match?(/\d/)
     num.push($matrix[row][col].to_i)
     col += 1
   end
+
   num.join
 end
 
 def checkTop(row, col)
   num = ''
   row = row - 1
- if $matrix[row][col].match?(/\d/)
-  num = checkLeft(row, col) + $matrix[row][col] + checkRight(row, col)
- end
+  if $matrix[row][col].match?(/\d/)
+    num = checkLeft(row, col) + $matrix[row][col] + checkRight(row, col)
+  end
  num
 end
 

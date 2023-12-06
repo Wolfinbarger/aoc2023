@@ -1,4 +1,3 @@
-find max of each color to make game possible
 
 bag = {'red' => 0, 'green'=> 0, 'blue' => 0}
 power = []
@@ -19,10 +18,9 @@ fileData.each_line do |line|
     end
   end
 
-  puts id_
-  puts bag
   power << (bag['green'] * bag['red'] * bag['blue'])
 
   bag = {'red' => 0, 'green'=> 0, 'blue' => 0}
 end
+
 puts power.sum

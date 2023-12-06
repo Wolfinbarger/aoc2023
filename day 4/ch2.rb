@@ -20,4 +20,5 @@ cards.each_pair do |key, pair|
 end
 
 cards.values.map { |n| ans += n[:count]}
+
 p ans
