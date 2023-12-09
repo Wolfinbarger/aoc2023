@@ -65,3 +65,4 @@ def main
 end
 
 p main()
+# LCM find starts each count to "..Z"
