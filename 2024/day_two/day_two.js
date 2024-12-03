@@ -7,6 +7,7 @@ const input = 'input.txt'
 
 const data = readData(test_input)
 
+
 const data_state = {}
 
 const convertToNumber = (data) => {
