@@ -22,8 +22,12 @@ a1 = a1.sort()
 a2 = a2.sort()
 
 
-for(let i = 0; i < a1.length; i++) {
-  count += Math.abs(a1[i] - a2[i])
-}
+// for(let i = 0; i < a1.length; i++) {
+//   count += Math.abs(a1[i] - a2[i])
+// }
 
+a1.forEach(e => {
+  const r = a2.filter((e2) => e2 === e).length
+  count += +e * r
+})
 console.log(count)
