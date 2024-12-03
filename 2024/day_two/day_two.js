@@ -1,12 +1,11 @@
-const fs = require('fs')
+import readData from '../helper/helper.mjs'
+
 
 const STEP_LIMIT = 3
 const test_input = 'test_input.txt'
 const input = 'input.txt'
-const data = fs.readFileSync(input, 'utf8', (err, data) => {
-  if (err) throw err;
-  return data.trim()
-})
+
+const data = readData(test_input)
 
 
 const data_state = {}
