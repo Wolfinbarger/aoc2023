@@ -1,15 +1,9 @@
-const fs = require('fs')
+import readData from "../helper/helper.mjs"
 
 const STEP_LIMIT = 3
-const test_input = 'test_input.txt'
-const input = 'input.txt'
-const data = fs.readFileSync(input, 'utf8', (err, data) => {
-  if (err) throw err;
-  return data.trim()
-})
-
-
-const data_state = {}
+const TEST_INPUT = 'test_input.txt'
+const INPUT = 'input.txt'
+const data = readData(TEST_INPUT)
 
 const convertToNumber = (data) => {
   data = data.trim().split('\n')
@@ -82,17 +76,17 @@ arr_num.forEach((row, index) => {
     const unsafe_index = getUnsafeElementIndex(row, status[index])
     // console.log(unsafe_index)
     const newRow = row.filter((e, indx) => indx != unsafe_index)
-    const newRowShiftLeft = row.filter((e, indx) => (indx - 1) != unsafe_index)
-    const newRowShiftRight = row.filter((e, indx) => (indx + 1) != unsafe_index)
+    // const newRowShiftLeft = row.filter((e, indx) => (indx - 1) != unsafe_index)
+    // const newRowShiftRight = row.filter((e, indx) => (indx + 1) != unsafe_index)
     const newRowStatus = isRowSafe(newRow, dataInitialDirection[index])
-    const newRowShiftLeftStatus = isRowSafe(newRowShiftLeft, dataInitialDirection[index])
-    const newRowShiftRightStatus = isRowSafe(newRowShiftRight, dataInitialDirection[index])
+    // const newRowShiftLeftStatus = isRowSafe(newRowShiftLeft, dataInitialDirection[index])
+    // const newRowShiftRightStatus = isRowSafe(newRowShiftRight, dataInitialDirection[index])
     console.log(newRow)
-    console.log(newRowShiftLeft)
-    console.log(newRowShiftRight)
+    // console.log(newRowShiftLeft)
+    // console.log(newRowShiftRight)
     if(newRowStatus === 'Safe') status[index] = 'Safe'
-    if(newRowShiftLeftStatus === 'Safe') status[index] = 'Safe'
-    if(newRowShiftRightStatus === 'Safe') status[index] = 'Safe'
+    // if(newRowShiftLeftStatus === 'Safe') status[index] = 'Safe'
+    // if(newRowShiftRightStatus === 'Safe') status[index] = 'Safe'
   }
 })
 status.forEach(e => {if(e === 'Safe') count++})
